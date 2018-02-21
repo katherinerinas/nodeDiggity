@@ -1,7 +1,37 @@
-//  Contains a constructor, Word that depends on the Letter constructor. This is used to create an object representing the current word the user is attempting to guess. That means the constructor should define:
-// An array of new Letter objects representing the letters of the underlying word
-// A function that returns a string representing the word. This should call the function on each letter object (the first function defined in Letter.js) that displays the character or an underscore and concatenate those together.
-// A function that takes a character as an argument and calls the guess function on each letter object (the second function defined in Letter.js
 
-var inquirer = require('inquirer');
- var prompt = require('prompt');
+var Letter = require('./letter.js');
+
+  var Word=function(word){
+   this.wordString=word;
+   this.wordArray=this.wordString.split("");
+   this.lettersArray= this.makeLetterArray;
+     }
+   Word.prototype.makeLetterArray=function(){
+   	    var letters=[];
+   		for (var i = 0; i<this.wordArray.length; i++) {
+   		letters.push(new Letter(this.wordArray[i]));
+       
+   		} 
+   		 return letters;
+   		 console.log(letters);
+   }
+   Word.prototype.displayWord = function (){
+
+    var word = [];
+
+    for(var i = 0; i < this.lettersArray.length; i++)
+    {
+        word.push(this.lettersArray[i].showWord());
+        word.push(" "); // this add a space bewteen letters 
+    }
+
+    return word.join("");
+};
+   var fruit =new Word ("apples");
+
+  console.log("\n", fruit.displayWord());
+
+//console.log(new Word("apples"));
+//console.log(fruit.makeLetterArray);
+console.log(fruit);
+module.exports=Word;
