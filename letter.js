@@ -1,25 +1,35 @@
 
 var Letter=function(character){
-	this.characterInWord=character;
-	this.isGuessed=false;
- 
+this.characterInWord=character;
+	
 
 }
 
-Letter.prototype.showWord = function(){
-	if(this.isGuessed){
-		return(this.characterInWord);
+Letter.prototype.toString = function(){
+	if(this.visible===true) {
+	return(this.characterInWord);
 
-	}else{
-		return("_");
 	}
+		return("_");
+	
+};
+
+
+Leter.prototype.getSolution = function (){
+	return this.characterInWord;
+
+}; 
+
+
+
+
+Letter.prototype.guess= function(characterGuess){
+	if(characterGuess.toUpperCase()===this.character.toUpperCase()){
+           this.visible=true;
+           return true;
 }
 
-
- 
-
-
-
-
+	return false;
+};
 
 module.exports=Letter;

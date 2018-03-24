@@ -22,7 +22,7 @@ var Letter = require('./letter.js');
     for(var i = 0; i < this.lettersArray.length; i++)
     {
         word.push(this.lettersArray[i].showWord());
-        word.push(" "); // this add a space bewteen letters 
+        word.push(" "); 
     }
 
     return word.join("");
